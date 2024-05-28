@@ -1,19 +1,16 @@
 <?php
 require '../helpers.php';
+require basePath('Framework/Router.php');
+require basePath('Framework/Database.php');
 
+$config = require basePath('config/db.php');
 
-$routes = [
-    '/' => 'controllers/home.php',
-    '/register' => 'controllers/register.php',
-    '/login' => 'controllers/login.php',
-    '/logout' => 'controllers/logout.php',
-    '404' => 'controllers/error/404.php'
-];
+$db = new Database($config);
+
+$router = new Router();
+$routes = require '../routes.php';
 
 $uri = $_SERVER['REQUEST_URI'];
+$method = $_SERVER['REQUEST_METHOD'];
 
-if (array_key_exists($uri, $routes)) {
-    require basePath($routes[$uri]);
-} else {
-    require basePath($routes['404']);
-}
+$router->route($uri, $method);

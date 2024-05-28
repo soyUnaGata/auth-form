@@ -1,0 +1,16 @@
+{
+  "name": "viktoriarud/auth-form",
+  "description": "Auth application",
+  "authors": [
+    {
+      "name": "Viktoria Ru",
+      "email": ""
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
