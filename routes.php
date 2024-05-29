@@ -11,11 +11,14 @@
 //$router->get('/register', 'UserController@register');
 //$router->get('/login', 'UserController@login');
 //$router->get('/logout', 'controllers/logout.php');
-//
+
 
 return function ($router) {
     $router->get('/', 'HomeController@index');
     $router->get('/register', 'UserController@register');
     $router->get('/login', 'UserController@login');
     $router->get('/logout', 'LogoutController@perform');
+
+    $router->post('/register', 'UserController@store');
+    $router->post('/login', 'UserController@authenticate');
 };
