@@ -9,9 +9,9 @@
 <body>
 <main>
     <section>
-        <a href="register.php">Register</a>
+        <a href="/register">Register</a>
         <span>or</span>
-        <a href="login.php">Login here</a>
+        <a href="/login">Login here</a>
     </section>
 
 </main>
