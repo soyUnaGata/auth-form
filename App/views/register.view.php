@@ -12,11 +12,12 @@
         <h1>Sign Up</h1>
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" value="<?= htmlspecialchars($user['username'] ?? '') ?>">
         </div>
+        <?= loadPartial('errors', ['errors' => $errors ?? []]) ?>
         <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email'] ?? '') ?>">
         </div>
         <div>
             <label for="password">Password:</label>

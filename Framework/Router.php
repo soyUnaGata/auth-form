@@ -14,6 +14,7 @@ class Router
 
         $this->routes[] = [
             'method' => $method,
+            'cmethod' => $controllerMethod,
             'uri' => $uri,
             'controller' => $controller
         ];
@@ -84,16 +85,11 @@ class Router
                         (new Authorize())->handle($middleware);
                     }
 
-                    $method = substr($route['uri'], 1);
-
-                    if ($method == '') {
-                        $method = 'index';
-                    }
-
+                    $cmethod = $route['cmethod'];
                     $controller = 'App\\controllers\\' . $route['controller'];
                     // Instatiate the controller and call the method
                     $controllerInstance = new $controller();
-                    $controllerInstance->$method($params);
+                    $controllerInstance->$cmethod($params);
                     return;
                 }
             }
