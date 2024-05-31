@@ -24,8 +24,8 @@
             <input type="password" name="password" id="password">
         </div>
         <div>
-            <label for="password2">Password Again:</label>
-            <input type="password" name="password2" id="password2">
+            <label for="password_confirm">Password Again:</label>
+            <input type="password" name="password_confirm" id="password_confirm">
         </div>
         <div>
             <label for="agree">
