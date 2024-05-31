@@ -27,7 +27,6 @@ class UserController
 
     public function store()
     {
-        echo "Entering store method<br>";
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -40,6 +39,12 @@ class UserController
         }
         if (!Validation::email($email)) {
             $errors['email'] = 'Email is invalid';
+        }
+        if (!Validation::string($password, 5, 50)) {
+            $errors['password'] = 'Password must be at least 5 characters';
+        }
+        if (!Validation::match($password, $password_confirm)) {
+            $errors['password_confirm'] = 'Password do not match';
         }
 
         if (!empty($errors)) {

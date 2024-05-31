@@ -24,7 +24,6 @@ function loadPartial($name, $data = [])
     if (file_exists($partialPath)) {
         extract($data);
         require $partialPath;
-//        return $partialPath;
     } else {
         echo "Partial '{$name} not found!'";
     }
