@@ -26,6 +26,11 @@ class UserController
         loadView('register');
     }
 
+    public function welcome()
+    {
+        loadView('main');
+    }
+
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -81,7 +86,6 @@ class UserController
 
             $this->db->query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)', $insertParams);
 
-            loadView('main', ['username' => $username]);
 
             $userId = $this->db->conn->lastInsertId();
 
@@ -90,6 +94,8 @@ class UserController
                 'username' => $username,
                 'email' => $email,
             ]);
+
+            header('Location: /welcome');
         } else {
             loadView('register');
         }

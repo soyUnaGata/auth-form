@@ -1,3 +1,9 @@
+<?php
+
+use Framework\Session;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +14,13 @@
 </head>
 <body>
 <main>
-    <h1>Welcome to My Website
-        <?= htmlspecialchars($username) ?>!
-    </h1>
+    <?php if (Session::has('user')): ?>
+        <h1>Welcome to My Website
+            <?= Session::get('user')['username'] ?>!
+        </h1>
+
+        <a href="/home">Log out</a>
+    <?php endif; ?>
 </main>
 </body>
 </html>
