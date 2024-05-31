@@ -3,6 +3,7 @@
 namespace App\controllers;
 
 use Framework\Database;
+use Framework\Session;
 use Framework\Validation;
 
 class UserController
@@ -79,8 +80,16 @@ class UserController
             ];
 
             $this->db->query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)', $insertParams);
-            
-            loadView('welcome', ['username' => $username]);
+
+            loadView('main', ['username' => $username]);
+
+            $userId = $this->db->conn->lastInsertId();
+
+            Session::set('user', [
+                'id' => $userId,
+                'username' => $username,
+                'email' => $email,
+            ]);
         } else {
             loadView('register');
         }
